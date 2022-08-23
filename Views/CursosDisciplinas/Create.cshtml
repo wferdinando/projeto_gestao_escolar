@@ -1,0 +1,36 @@
+@model CursoDisciplina
+
+@{
+    ViewData["Title"] = "Cursos/Disciplinas";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <p></p>
+        <form method="post">
+            <div class="form-group">
+                 <label class="control-label">Curso</label>
+                <select class="form-select my-3" asp-for="CursoId"
+                    asp-items="@(new SelectList(@ViewBag.DropCursos, "CursoId", "Nome"))">
+                    <option value="0" selected>Selecione um Curso</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Disciplina</label>
+                <select class="form-select" multiple asp-for="DisciplinaId"
+                    asp-items="@(new SelectList(@ViewBag.DropDisciplinas, "DisciplinaId", "Nome"))">
+                    <option value="0" selected>Selecione uma Disciplina</option>
+                </select>
+            </div>
+            <div class="form-group my-3">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- <p class="text-danger">@ViewData["Aviso"]</p> -->
+
+</div>

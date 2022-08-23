@@ -1,0 +1,58 @@
+@model IEnumerable<Aluno>
+
+@{
+    ViewData["Title"] = "Alunos";
+}
+
+<h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+<hr>
+<div class="row">
+    <div class="col-lg-2">
+        <a asp-action="Create" class="btn btn-success mb-4"><i class="fa-solid fa-plus"></i>&nbsp; Cadastrar</a>
+    </div>
+    <div class="col-lg-10">
+        <form action="">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Busca Avançada" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2"><i
+                        class="fa-solid fa-magnifying-glass fa-1x"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="text-center" style="width: 5%;">ID</th>
+                    <th scope="col" style="width: 40%;">@Html.DisplayNameFor(model => model.Nome)</th>
+                    <th scope="col" style="width: 40%;">@Html.DisplayNameFor(model => model.Email)</th>
+                    <th scope="col" class="text-center" style="width: 15%;">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var aluno in Model)
+                {
+                    <tr>
+                        <td class="text-center" style="width: 5%;">@Html.DisplayFor(model => aluno.AlunoId)</td>
+                        <td style="width: 40%;">@Html.DisplayFor(model => aluno.Nome)</td>
+                        <td style="width: 40%;">@Html.DisplayFor(model => aluno.Email)</td>
+                        <td class="text-center" style="width: 15%;">
+                            <a asp-controller="Matriculas" asp-action="Matricular" asp-route-id="@aluno.AlunoId"
+                            title="Matricular Aluno"><i class="fa-solid fa-folder-plus fa-1x text-success"></i></a> |
+                            <a asp-controller="Alunos" asp-action="Edit" asp-route-id="@aluno.AlunoId"
+                            title="Editar Aluno"><i class="fa-solid fa-pen-to-square fa-1x text-warning"></i></a> |
+                            <a asp-controller="Alunos" asp-action="Edit" asp-route-id="@aluno.AlunoId"
+                            title="Detalhes Aluno"><i class="fa-solid fa-magnifying-glass fa-1x"></i></a> |
+                            <a asp-controller="Alunos" asp-action="Edit" asp-route-id="@aluno.AlunoId"
+                            title="Excluir Aluno"><i class="fa-solid fa-trash fa-1x text-danger"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

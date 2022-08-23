@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="card p-3 mb-2 bg">
+            <div class="card-body text-center ">
+                <p style="font-size: 3rem"><i class="fa-solid fa-user-plus text-primary"></i></p>
+                <div class="row">
+                    <a asp-controller="Alunos" asp-action="Index" class="btn btn-primary">Alunos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="card p-3 mb-2">
+            <div class="card-body text-center ">
+                <p style="font-size: 3rem"><i class="fa-solid fa-book-open text-success"></i></p>
+                <div class="row">
+                    <a asp-controller="Disciplinas" asp-action="Index" class="btn btn-success">Disciplinas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="card p-3 mb-2">
+            <div class="card-body text-center">
+                <p style="font-size: 3rem"><i class="fa-solid fa-book text-danger"></i></p>
+                <div class="row">
+                    <a asp-controller="Cursos" asp-action="Index" class="btn btn-danger">Cursos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="card p-3 mb-2">
+            <div class="card-body text-center ">
+                <p style="font-size: 3rem"><i class="fa-solid fa-chalkboard-user"></i></p>
+                <div class="row">
+                    <a asp-controller="Turmas" asp-action="Index" class="btn btn-dark">Turmas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

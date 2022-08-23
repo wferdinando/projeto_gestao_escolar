@@ -1,0 +1,50 @@
+@model IEnumerable<CursoDisciplina>
+
+@{
+    ViewData["Title"] = "Cursos/Disciplinas";
+}
+
+<h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+<hr>
+<div class="row">
+    <div class="col-lg-2">
+        <a asp-action="Create" class="btn btn-success mb-4"><i class="fa-solid fa-plus"></i>&nbsp; Cadastrar</a>
+    </div>
+    <div class="col-lg-10">
+        <form action="">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Busca Avançada" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass fa-1x"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="text-center" style="width: 10%;">Id</th>
+                    <th scope="col" style="width:35%;">@Html.DisplayNameFor(model => model.Curso.Nome)</th>
+                    <th scope="col"  style="width:35%;">@Html.DisplayNameFor(model => model.Disciplina.Nome)</th>
+                    <th class="text-center" style="width: 15%;">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cd in Model)
+                {
+                    <tr>
+                        <td class="text-center" style="width: 10%;">@Html.DisplayFor(model => cd.CursoDisciplinaId)</td>
+                        <td style="width:35%;">@Html.DisplayFor(model => cd.Curso.Nome)</td>
+                        <td style="width:35%;">@Html.DisplayFor(model => cd.Disciplina.Nome)</td>
+                        <td class="text-center" style="width: 15%;">
+                            <a asp-controller="Matriculas" asp-action="Edit" asp-route-id="@cd.DisciplinaId" title="Editar Matricula"><i class="fa-solid fa-pen-to-square fa-1x text-warning"></i></a> |
+                            <a asp-controller="Matriculas" asp-action="Details" asp-route-id="@cd.DisciplinaId" title="Detalhes Matricula"><i class="fa-solid fa-magnifying-glass fa-1x"></i></a> |
+                            <a asp-controller="Matriculas" asp-action="Delete" asp-route-id="@cd.DisciplinaId" title="Excluir Matricula"><i class="fa-solid fa-trash fa-1x text-danger"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

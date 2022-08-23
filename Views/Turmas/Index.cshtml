@@ -1,0 +1,54 @@
+@model IEnumerable<Turma>
+
+@{
+    ViewData["Title"] = "Turmas";
+}
+
+<h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+<hr>
+<div class="row">
+    <div class="col-lg-2">
+        <a asp-action="Create" class="btn btn-success mb-4"><i class="fa-solid fa-plus"></i>&nbsp; Cadastrar</a>
+    </div>
+    <div class="col-lg-10">
+        <form action="">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Busca Avançada" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2"><i
+                        class="fa-solid fa-magnifying-glass fa-1x"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="text-center" style="width: 10%;">ID</th>
+                    <th scope="col" style="width: 75%;">Turma</th>
+                    <th scope="col" class="text-center" style="width: 15%;">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var turma in Model)
+                {
+                    <tr>
+                        <td class="text-center" style="width: 10%;">@Html.DisplayFor(model => turma.TurmaId)</td>
+                        <td style="width: 75%;">@Html.DisplayFor(model => turma.Nome)</td>
+                        <td class="text-center" style="width: 15%;">
+                            <a asp-controller="Turmas" asp-action="Edit" asp-route-id="@turma.TurmaId"
+                            title="Editar Turma"><i class="fa-solid fa-pen-to-square text-warning"></i></a> |
+                            <a asp-controller="Turmas" asp-action="Edit" asp-route-id="@turma.TurmaId"
+                            title="Detalhes Turma"><i class="fa-solid fa-magnifying-glass"></i></a> |
+                            <a asp-controller="Turmas" asp-action="Edit" asp-route-id="@turma.TurmaId"
+                            title="Excluir Turma"><i class="fa-solid fa-trash text-danger"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

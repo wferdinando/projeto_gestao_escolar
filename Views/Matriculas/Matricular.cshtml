@@ -1,0 +1,34 @@
+@model Matricula
+
+@{
+    ViewData["Title"] = "Matriculas";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <p></p>
+        <form method="post">
+            <div class="form-group">
+                <input type="hidden" asp-for="AlunoId" value="@ViewBag.AlunoSelecionado.AlunoId">
+                <label class="control-label">Aluno</label>
+                <input type="text" class="form-control" value="@ViewBag.AlunoSelecionado.Nome">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Turma</label>
+                <select class="form-select" asp-for="TurmaId"
+                    asp-items="@(new SelectList(@ViewBag.DropTurmas, "TurmaId", "Nome"))">
+                    <option value="0" selected>Selecione uma Turma</option>
+                </select>
+            </div>
+            <div class="form-group my-3">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+
+    <p class="text-danger">@ViewData["Aviso"]</p>
+
+</div>
